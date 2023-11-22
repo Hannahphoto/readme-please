@@ -13,13 +13,18 @@ const fs = require("fs");
     // THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
     // THEN I am taken to the corresponding section of the README
 
-function ReadmePageContent({title, description, installation, usage, contribution, tests}){
+class ReadmePageContent {
+    constructor({title, description, installation, usage, contribution, tests}){
     this.title = title;
     this.description = description;
     this.installation = installation;
     this.usage = usage;
     this.contribution = contribution;
     this.tests = tests;
+    this.printMetaData = function(){
+       return (`${this.title},${this.description}, ${this.installation}, ${this.usage}, ${contribution},${tests}  `)
+    }
+}
 };
 
 // TODO: Create a function to initialize app
@@ -76,18 +81,19 @@ function init() {
         },
     ])
     
-    .then((answers)) = function (){
-        const readmeContent = new ReadmePageContent(answer);
-        const generateMarkdown = generateMarkdown(readmeContent);
+    .then(function (answers){
+        const readmeContent = new ReadmePageContent(answers);
+        const readmeDataString = readmeContent.printMetaData();
     
     
     // TODO: Create a function to write README file
     // function writeToFile(fileName, data) {};
 
-    fs.writeFile('readme.md', ReadmePageContent, (err) =>
-    err? console.log(err) : console.log('Sucessfully creaded readme'))
-
-};
+    fs.writeFile('readme.md', ReadmePageContent, function(){
+    if(err){console.log(err); 
+    }else
+    console.log('Sucessfully creaded readme')})
+});
 };
 
 // Function call to initialize app
