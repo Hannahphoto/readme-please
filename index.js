@@ -1,14 +1,26 @@
 // TODO: Include packages needed for this application
-const generateMarkdown = require("./utils/generateMarkdown");
+const generateMarkdown = require("./utils/generateMarkdown.js");
 
 const inquirer = require("inquirer");
 
 const fs = require("fs");
+// const generateMarkdown = require("./utils/generateMarkdown");
 
+//THEN this is displayed as the title of the README
+    //THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests
+    //THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
+    // THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
+    // THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
+    // THEN I am taken to the corresponding section of the README
 
-// TODO: Create a function to write README file
-// function writeToFile(fileName, data) {};
-// const readmePageContent = ({'Title'})//?????
+function ReadmePageContent({title, description, installation, usage, contribution, tests}){
+    this.title = title;
+    this.description = description;
+    this.installation = installation;
+    this.usage = usage;
+    this.contribution = contribution;
+    this.tests = tests;
+};
 
 // TODO: Create a function to initialize app
 //GIVEN a command-line application that accepts user input
@@ -25,22 +37,22 @@ function init() {
     inquirer.prompt([
         {
             type: 'input',
-            name: 'Title',
+            name: 'title',
             message: "What is your project title?",
         },
         {
             type: 'input',
-            name: 'Description',
+            name: 'description',
             message: "What is the description of your project?",
         },
         {
             type: 'input',
-            name: 'Installation',
+            name: 'installation',
             message: "What are the instructions for installation?",
         },
         {
             type: 'list',
-            name: 'Usage',
+            name: 'usage',
             message: "What is the license usage of your project?",
             choices: [
                 'Apache License 2.0',
@@ -54,29 +66,28 @@ function init() {
         },
         {
             type: 'input',
-            name: 'Contribution',
+            name: 'contribution',
             message: "What are the contribution guidelines for your porject?",
         },
         {
             type: 'input',
-            name: 'Tests',
+            name: 'tests',
             message: "What are the test instrcutions for your project?",
         },
     ])
     
-    // .then((answers)) => {
-    //     const readmePageContent = generateMarkdown(answers);
+    .then((answers)) = function (){
+        const readmeContent = new ReadmePageContent(answer);
+        const generateMarkdown = generateMarkdown(readmeContent);
     
-    //THEN this is displayed as the title of the README
-    //THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests
-    //THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
-    // THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
-    // THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
-    // THEN I am taken to the corresponding section of the README
     
-//     fs.writeFile('readme.md', readmePageContent, (err) =>
-//     err? console.log(err) : console.log('Sucessfully creaded readme'))
-// };
+    // TODO: Create a function to write README file
+    // function writeToFile(fileName, data) {};
+
+    fs.writeFile('readme.md', ReadmePageContent, (err) =>
+    err? console.log(err) : console.log('Sucessfully creaded readme'))
+
+};
 };
 
 // Function call to initialize app
