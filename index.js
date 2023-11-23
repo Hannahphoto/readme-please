@@ -21,18 +21,19 @@ function ReadmePageContent(title, description, installation, usage, contribution
     this.contribution = contribution;
     this.tests = tests;
     }
-    ReadmePageContent.printMetaData = function(){
-        return (`${this.title},${this.description}, ${this.installation}, ${this.usage}, ${this.contribution},${this.tests}`)
-}
 
-const readmeContent = new ReadmePageContent({
-    tite: 'My Title',
-    description: 'Description of page',
-    installation: 'how to install',
-    usage: 'licensing',
-    contribution: 'who worked on this?',
-    tests: 'dont forget to test',
-});
+ReadmePageContent.prototype.printMetaData = function(){
+        return (`${this.title},${this.description}, ${this.installation}, ${this.usage}, ${this.contribution},${this.tests}`)
+    };
+
+const readmeContent = new ReadmePageContent(
+    'My Title',
+    'Description of page',
+    'how to install',
+    'licensing',
+    'who worked on this?',
+    'dont forget to test',
+);
 // TODO: Create a function to initialize app
 //GIVEN a command-line application that accepts user input
 function init() {
@@ -92,7 +93,14 @@ function init() {
     // TODO: Create a function to write README file
     // function writeToFile(fileName, data) {};
 
-    fs.writeFile('readme.md', ReadmePageContent.printMetaData(), function(err){
+    fs.writeFile('readme.md', new ReadmePageContent(
+        answers.title,
+        answers.description,
+        answers.installation,
+        answers.usage,
+        answers.contribution,
+        answers.tests,
+    ).printMetaData(), function(err){
     if(err){
         console.log(err); 
     }else
