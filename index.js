@@ -4,7 +4,6 @@ const generateMarkdown = require("./utils/generateMarkdown.js");
 const inquirer = require("inquirer");
 
 const fs = require("fs");
-// const generateMarkdown = require("./utils/generateMarkdown");
 
 //THEN this is displayed as the title of the README
     //THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests
@@ -13,27 +12,22 @@ const fs = require("fs");
     // THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
     // THEN I am taken to the corresponding section of the README
 
-function ReadmePageContent(title, description, installation, usage, contribution, tests) {
+function ReadmePageContent(title, description, installation, usage, contribution, tests, gitHub, email) {
     this.title = title;
     this.description = description;
     this.installation = installation;
     this.usage = usage;
     this.contribution = contribution;
     this.tests = tests;
+    this.gitHub = gitHub;
+    this.email = email;
     }
 
-ReadmePageContent.prototype.printMetaData = function(){
+ReadmePageContent.prototype.generateMarkdown = function(){
         return (`${this.title},${this.description}, ${this.installation}, ${this.usage}, ${this.contribution},${this.tests}`)
     };
 
-const readmeContent = new ReadmePageContent(
-    'My Title',
-    'Description of page',
-    'how to install',
-    'licensing',
-    'who worked on this?',
-    'dont forget to test',
-);
+
 // TODO: Create a function to initialize app
 //GIVEN a command-line application that accepts user input
 function init() {
@@ -86,6 +80,16 @@ function init() {
             name: 'tests',
             message: "What are the test instrcutions for your project?",
         },
+        {
+            type: 'input',
+            name: 'gitHub',
+            message: "What is your Git Hub username?",
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "Please enter your full email.",
+        },
     ])
     
     .then(function (answers){
@@ -100,11 +104,13 @@ function init() {
         answers.usage,
         answers.contribution,
         answers.tests,
-    ).printMetaData(), function(err){
+        answers.gitHub,
+        answers.email,
+    ).generateMarkdown(), function(err){
     if(err){
         console.log(err); 
     }else
-    console.log('Sucessfully creaded readme')})
+    console.log('Sucessfully creaded readme!')})
 });
 };
 
