@@ -13,20 +13,26 @@ const fs = require("fs");
     // THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
     // THEN I am taken to the corresponding section of the README
 
-class ReadmePageContent {
-    constructor({title, description, installation, usage, contribution, tests}){
+function ReadmePageContent(title, description, installation, usage, contribution, tests) {
     this.title = title;
     this.description = description;
     this.installation = installation;
     this.usage = usage;
     this.contribution = contribution;
     this.tests = tests;
-    this.printMetaData = function(){
-       return (`${this.title},${this.description}, ${this.installation}, ${this.usage}, ${contribution},${tests}  `)
     }
+    ReadmePageContent.printMetaData = function(){
+        return (`${this.title},${this.description}, ${this.installation}, ${this.usage}, ${this.contribution},${this.tests}`)
 }
-};
 
+const readmeContent = new ReadmePageContent({
+    tite: 'My Title',
+    description: 'Description of page',
+    installation: 'how to install',
+    usage: 'licensing',
+    contribution: 'who worked on this?',
+    tests: 'dont forget to test',
+});
 // TODO: Create a function to initialize app
 //GIVEN a command-line application that accepts user input
 function init() {
@@ -82,15 +88,13 @@ function init() {
     ])
     
     .then(function (answers){
-        const readmeContent = new ReadmePageContent(answers);
-        const readmeDataString = readmeContent.printMetaData();
-    
     
     // TODO: Create a function to write README file
     // function writeToFile(fileName, data) {};
 
-    fs.writeFile('readme.md', ReadmePageContent, function(){
-    if(err){console.log(err); 
+    fs.writeFile('readme.md', ReadmePageContent.printMetaData(), function(err){
+    if(err){
+        console.log(err); 
     }else
     console.log('Sucessfully creaded readme')})
 });
