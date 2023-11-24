@@ -1,1 +1,1 @@
-HANNAH TEST,TEST, TEST, MIT License, TEST,TEST
+denali,denali learning how to make a readme file from the terminal, follow the prompts, MIT License, create a readme,do this do that

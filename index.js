@@ -1,9 +1,9 @@
 // TODO: Include packages needed for this application
-const generateMarkdown = require("./utils/generateMarkdown.js");
-
 const inquirer = require("inquirer");
 
 const fs = require("fs");
+
+const generateMarkdown = require("./utils/generateMarkdown.js");
 
 //THEN this is displayed as the title of the README
     //THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests
@@ -23,7 +23,7 @@ function ReadmePageContent(title, description, installation, usage, contribution
     this.email = email;
     }
 
-ReadmePageContent.prototype.generateMarkdown = function(){
+ReadmePageContent.prototype.generateMarkdown() = function(){
         return (`${this.title},${this.description}, ${this.installation}, ${this.usage}, ${this.contribution},${this.tests}`)
     };
 
@@ -106,7 +106,7 @@ function init() {
         answers.tests,
         answers.gitHub,
         answers.email,
-    ).generateMarkdown(), function(err){
+    ).generateMarkdown(answers), function(err){
     if(err){
         console.log(err); 
     }else
