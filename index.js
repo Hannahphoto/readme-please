@@ -12,19 +12,20 @@ const generateMarkdown = require("./utils/generateMarkdown.js");
     // THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
     // THEN I am taken to the corresponding section of the README
 
-function ReadmePageContent(title, description, installation, usage, contribution, tests, gitHub, email) {
+function ReadmePageContent(title, description, installation, usage, license, contribution, tests, gitHub, email) {
     this.title = title;
     this.description = description;
     this.installation = installation;
     this.usage = usage;
+    this.license = license;
     this.contribution = contribution;
     this.tests = tests;
     this.gitHub = gitHub;
     this.email = email;
     }
 
-ReadmePageContent.prototype.generateMarkdown() = function(){
-        return (`${this.title},${this.description}, ${this.installation}, ${this.usage}, ${this.contribution},${this.tests}`)
+ReadmePageContent.prototype.generateMarkdown = function(){
+        return `${this.title},${this.description}, ${this.installation},${this.usage} ${this.license}, ${this.contribution},${this.tests}, ${this.gitHub}, ${this.email}`
     };
 
 
@@ -57,14 +58,19 @@ function init() {
             message: "What are the instructions for installation?",
         },
         {
-            type: 'list',
+            type: 'input',
             name: 'usage',
+            message: "What is the usage of this project?",
+        },
+        {
+            type: 'list',
+            name: 'license',
             message: "What is the license usage of your project?",
             choices: [
-                'Apache License 2.0',
-                'GNU General Public License v2.0',
-                'MIT License',
-                'Boost Software License 1.0',
+                'Apache',
+                'GNU-GeneralPublic',
+                'MIT-License',
+                'Boost-Software License 1.0',
                 'Mozzila Public License',
                 'The Unlicense',
                 'BSD-2-Clause "Simplified" License',
@@ -96,24 +102,17 @@ function init() {
     
     // TODO: Create a function to write README file
     // function writeToFile(fileName, data) {};
+    const template = generateMarkdown(answers);
+    console.log(template);
 
-    fs.writeFile('readme.md', new ReadmePageContent(
-        answers.title,
-        answers.description,
-        answers.installation,
-        answers.usage,
-        answers.contribution,
-        answers.tests,
-        answers.gitHub,
-        answers.email,
-    ).generateMarkdown(answers), function(err){
+    fs.writeFile('readme.md', template, function(err){
     if(err){
         console.log(err); 
     }else
     console.log('Sucessfully creaded readme!')})
-});
-};
 
+});
+}
 // Function call to initialize app
   //WHEN a high-quality, professional README.md is generated with the title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions.
 init();
