@@ -74,6 +74,7 @@ function init() {
                 'Mozzila Public License',
                 'The Unlicense',
                 'BSD-2-Clause "Simplified" License',
+                'none',
             ]
         },
         {
