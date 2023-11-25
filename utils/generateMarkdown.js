@@ -17,7 +17,7 @@ function renderLicenseBadge(license) {
 // WHEN I enter my GitHub username
 function renderLicenseLink(license) {
   if(license !== "none"){
-    return `![${license}](https://opensource.org/license/${license})`
+    return `![License](https://opensource.org/license/${license})`
   }else
   return '';
 };
@@ -27,7 +27,7 @@ function renderLicenseLink(license) {
 
 function renderLicenseSection(license) {
   if(license !== "none"){
-    return `! ## License
+    return `
     This project is licensed under the (https://opensource.org/license/${license}) license.`
   }else
   return '';
@@ -50,7 +50,7 @@ function generateMarkdown(data) {
   * [License](#License)
   * [Contributions](#Contribution)
   * [Tests](#tests)
-  * 
+  
   ## Installation
   ${data.installation}
 
