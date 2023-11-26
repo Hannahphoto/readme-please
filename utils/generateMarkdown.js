@@ -4,7 +4,8 @@
 // THEN a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under
 function renderLicenseBadge(license) {
   if(license !== "none"){
-    return `![GitHub License](https://img.shields.io/badge/license-${license})`;
+    return `![GitHub License](https://img.shields.io/badge/${license}-green)
+    `;
   }else
   return '';
 };
@@ -17,7 +18,7 @@ function renderLicenseBadge(license) {
 // WHEN I enter my GitHub username
 function renderLicenseLink(license) {
   if(license !== "none"){
-    return `![License](https://opensource.org/license/${license})`
+    return `![License] (https://opensource.org/license/${license})`
   }else
   return '';
 };

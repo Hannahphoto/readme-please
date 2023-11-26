@@ -1,8 +1,9 @@
-# TEST
-  ![GitHub License](https://img.shields.io/badge/license-Apache)
+# Generate Readme
+  ![GitHub License](https://img.shields.io/badge/Apache-green)
+    
 
   ## Description
-  TEST
+  learning how to create a readme from the terminal
 
   ## Table of Contents
   * [Description](#description)
@@ -13,20 +14,20 @@
   * [Tests](#tests)
   
   ## Installation
-  TEST
+  inquier
 
   ## Usage
-  TEST
+  l
 
   ## License
   Apache
-  ![License](https://opensource.org/license/Apache)
+  ![License] (https://opensource.org/license/Apache)
 
   ## Contribution
-  TEST
+  alkdf
 
   ## Tests
-  TEST
+  afl
 
   ## Questions
   * GitHub - [Hannahphoto](https://github.com/Hannahphoto)
