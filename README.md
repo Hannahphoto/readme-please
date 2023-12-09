@@ -1,9 +1,9 @@
-# Generate Readme
-  ![GitHub License](https://img.shields.io/badge/Apache-green)
+# Generate README Please
+  ![GitHub License](https://img.shields.io/badge/Apache-green.svg)
     
 
   ## Description
-  learning how to create a readme from the terminal
+  Learning how to make a readme file from the terminal, using node.js.
 
   ## Table of Contents
   * [Description](#description)
@@ -14,24 +14,28 @@
   * [Tests](#tests)
   
   ## Installation
-  inquier
+  Inquirer is needed. command - npm i inquirer
 
   ## Usage
-  l
+  Educational purposes
 
   ## License
   Apache
-  ![License] (https://opensource.org/license/Apache)
+  ![License](https://opensource.org/license/Apache)
 
   ## Contribution
-  alkdf
+  n/a
 
   ## Tests
-  afl
+  Always test
 
   ## Questions
   * GitHub - [Hannahphoto](https://github.com/Hannahphoto)
   * Email - hannahprice67@gmail.com
   
-    This project is licensed under the (https://opensource.org/license/Apache) license.
+    This project is licensed under the (https://opensource.org/Apache) license.
+  
+  ## Walkthrough Video
+  https://youtu.be/U7UY9IciMYA
+
   
